@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Patient = require("../models/Patient");
-
+const mongoose = require("mongoose");
 // Create a new patient
 router.post("/", async (req, res) => {
   try {
