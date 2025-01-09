@@ -8,6 +8,8 @@ const app = express();
 connectDB();
 
 app.use(cors());
+app.options("/api/patients/:id", cors()); // Pre-flight for PATCH requests
+
 app.use(bodyParser.json());
 
 app.use("/api", route);

@@ -35,8 +35,11 @@ router.get("/:id", async (req, res) => {
 });
 
 // Update a patient by ID
-router.patch("/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: "Invalid ID format" });
+    }
     const patient = await Patient.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
